@@ -5,12 +5,14 @@ import java.time.LocalDateTime;
 import com.google.gson.annotations.SerializedName;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import maplem.api_java.Utils;
 
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @ToString
 public class CharacterBasicDTO {
 	
