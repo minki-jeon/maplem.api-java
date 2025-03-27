@@ -11,6 +11,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import maplem.api_java.dto.character.CharacterBasicDTO;
 import maplem.api_java.dto.character.CharacterDTO;
+import maplem.api_java.dto.character.CharacterItemEquipmentDTO;
 import maplem.api_java.templete.CharacterApi;
 
 public class MapleStoryMApi {
@@ -42,6 +43,18 @@ public class MapleStoryMApi {
 		final Response<CharacterBasicDTO> response = buildRetrofit()
 				.create(CharacterApi.class)
 				.getCharacterBasic(this.apiKey, ocid)
+				.execute();
+		if (!response.isSuccessful()) {
+			// TODO thorw parseError(response);
+		}
+		
+		return response.body();
+	}
+	
+	public CharacterItemEquipmentDTO getCharacterItemEquipment(String ocid) throws IOException {
+		final Response<CharacterItemEquipmentDTO> response = buildRetrofit()
+				.create(CharacterApi.class)
+				.getCharacterItemEquipment(this.apiKey, ocid)
 				.execute();
 		if (!response.isSuccessful()) {
 			// TODO thorw parseError(response);

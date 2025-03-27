@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import maplem.api_java.dto.character.CharacterBasicDTO;
 import maplem.api_java.dto.character.CharacterDTO;
+import maplem.api_java.dto.character.CharacterItemEquipmentDTO;
 
 @DisplayName("캐릭터 정보 조회")
 public class CharacterApi {
@@ -27,6 +28,13 @@ public class CharacterApi {
 	@DisplayName("기본 정보 조회")
 	void getCharacterBasic() throws IOException {
 		CharacterBasicDTO response = api.getCharacterBasic(ocid);
+		System.out.println(response.toString());
+	}
+	
+	@Test
+	@DisplayName("장착 아이템 정보 조회")
+	void getCharacterItemEquipment() throws IOException {
+		CharacterItemEquipmentDTO response = api.getCharacterItemEquipment(ocid);
 		System.out.println(response.toString());
 	}
 }

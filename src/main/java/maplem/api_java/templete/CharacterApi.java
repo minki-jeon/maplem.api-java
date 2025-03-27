@@ -2,6 +2,7 @@ package maplem.api_java.templete;
 
 import maplem.api_java.dto.character.CharacterBasicDTO;
 import maplem.api_java.dto.character.CharacterDTO;
+import maplem.api_java.dto.character.CharacterItemEquipmentDTO;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -13,4 +14,7 @@ public interface CharacterApi {
 	
 	@GET("maplestorym/v1/character/basic")
 	Call<CharacterBasicDTO> getCharacterBasic(@Header("x-nxopen-api-key") String apiKey, @Query("ocid") String ocid);
+	
+	@GET("maplestorym/v1/character/item-equipment")
+	Call<CharacterItemEquipmentDTO> getCharacterItemEquipment(@Header("x-nxopen-api-key") String apiKey, @Query("ocid") String ocid);
 }
