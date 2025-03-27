@@ -9,6 +9,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import maplem.api_java.dto.character.CharacterBasicDTO;
 import maplem.api_java.dto.character.CharacterDTO;
 import maplem.api_java.templete.CharacterApi;
 
@@ -29,6 +30,18 @@ public class MapleStoryMApi {
 		final Response<CharacterDTO> response = buildRetrofit()
 				.create(CharacterApi.class)
 				.getCharacter(this.apiKey, characterName, worldName)
+				.execute();
+		if (!response.isSuccessful()) {
+			// TODO thorw parseError(response);
+		}
+		
+		return response.body();
+	}
+	
+	public CharacterBasicDTO getCharacterBasic(String ocid) throws IOException {
+		final Response<CharacterBasicDTO> response = buildRetrofit()
+				.create(CharacterApi.class)
+				.getCharacterBasic(this.apiKey, ocid)
 				.execute();
 		if (!response.isSuccessful()) {
 			// TODO thorw parseError(response);

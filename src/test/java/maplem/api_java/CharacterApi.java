@@ -25,9 +25,8 @@ public class CharacterApi {
 	
 	@Test
 	@DisplayName("기본 정보 조회")
-	void getCharacterBasic() {
-		CharacterBasicDTO response = api.getCharaterBasic(ocid);
+	void getCharacterBasic() throws IOException {
+		CharacterBasicDTO response = api.getCharacterBasic(ocid);
 		System.out.println(response.toString());
-		System.out.println(response.getCharacterName());
 	}
 }
