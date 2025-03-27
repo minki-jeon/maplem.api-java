@@ -9,7 +9,7 @@ import retrofit2.http.Query;
 
 public interface CharacterApi {
 	@GET("maplestorym/v1/id")
-	Call<CharacterDTO> getCharacter(@Header("x-nxopen-api-key") String apiKey, @Query("character_name") String characterName);
+	Call<CharacterDTO> getCharacter(@Header("x-nxopen-api-key") String apiKey, @Query("character_name") String characterName, @Query("world_name") String worldName);
 	
 	@GET("maplestorym/v1/character/basic")
 	Call<CharacterBasicDTO> getCharacterBasic(@Header("x-nxopen-api-key") String apiKey, @Query("ocid") String ocid, @Query("date") String date);

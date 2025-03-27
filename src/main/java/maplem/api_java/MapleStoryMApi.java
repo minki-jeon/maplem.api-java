@@ -1,5 +1,6 @@
 package maplem.api_java;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import lombok.Getter;
@@ -8,6 +9,8 @@ import okhttp3.OkHttpClient;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import maplem.api_java.dto.character.CharacterDTO;
+import maplem.api_java.templete.CharacterApi;
 
 public class MapleStoryMApi {
 	private final String apiKey;
@@ -22,7 +25,7 @@ public class MapleStoryMApi {
 		this.timeout = 5000;
 	}
 	
-	public CharacterDTO getCharacter(String characterName, String worldName) {
+	public CharacterDTO getCharacter(String characterName, String worldName) throws IOException {
 		final Response<CharacterDTO> response = buildRetrofit()
 				.create(CharacterApi.class)
 				.getCharacter(this.apiKey, characterName, worldName)

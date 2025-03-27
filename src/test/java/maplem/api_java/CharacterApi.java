@@ -1,5 +1,7 @@
 package maplem.api_java;
 
+import java.io.IOException;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +16,7 @@ public class CharacterApi {
 	
 	@Test
 	@DisplayName("캐릭터 식별자(ocid) 조회")
-	void getCharacter() {
+	void getCharacter() throws IOException {
 		String nickname = "쩌밍";
 		String world = "루나";
 		CharacterDTO response = api.getCharacter(nickname, world);
