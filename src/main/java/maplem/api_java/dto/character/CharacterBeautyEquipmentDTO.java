@@ -1,7 +1,5 @@
 package maplem.api_java.dto.character;
 
-import java.util.List;
-
 import com.google.gson.annotations.SerializedName;
 
 import lombok.AllArgsConstructor;
@@ -20,15 +18,15 @@ public class CharacterBeautyEquipmentDTO {
 	@SerializedName("character_class")
 	private String characterClass;
 	@SerializedName("character_hair")
-	private List<CharacterHairInfoDTO> characterHair;
+	private CharacterHairDTO characterHair;
 	@SerializedName("character_face")
-	private List<CharacterFaceInfoDTO> characterFace;
+	private CharacterFaceDTO characterFace;
 	@SerializedName("character_skin_name")
 	private String characterSkinName;
 	@SerializedName("additional_character_hair")
-	private List<AdditionalCharacterHairInfoDTO> additionalCharacterHair;
+	private AdditionalCharacterHairDTO additionalCharacterHair;
 	@SerializedName("additional_character_face")
-	private List<AdditionalCharacterFaceInfoDTO> additionalCharacterFace;
+	private AdditionalCharacterFaceDTO additionalCharacterFace;
 	@SerializedName("additional_character_skin_name")
 	private String additionalCharacterSkinName;
 	

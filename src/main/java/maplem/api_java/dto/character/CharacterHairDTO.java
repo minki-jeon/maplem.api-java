@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class CharacterHairInfoDTO {
+public class CharacterHairDTO {
 	@SerializedName("hair_name")
 	private String hairName;
 	@SerializedName("base_color")

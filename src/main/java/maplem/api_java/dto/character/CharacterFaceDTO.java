@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class CharacterFaceInfoDTO {
+public class CharacterFaceDTO {
 	@SerializedName("face_name")
 	private String faceName;
 	@SerializedName("base_color")
