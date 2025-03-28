@@ -21,7 +21,7 @@ public class CharacterApi {
 	private static final MapleStoryMApi api = new MapleStoryMApi(apiKey);	// main
 	private static final String ocid = "9aa8425eb305ff231a632c6507ab63ccc583003eb0448898768cf5ad982a332b";		// INPUT_OCID
 
-//	@Test
+	@Test
 	@DisplayName("캐릭터 식별자(ocid) 조회")
 	void getCharacter() throws IOException {
 		String nickname = "쩌밍";				// INPUT_NICKNAME
@@ -30,28 +30,28 @@ public class CharacterApi {
 //		System.out.println(response.toString());
 	}
 	
-//	@Test
+	@Test
 	@DisplayName("기본 정보 조회")
 	void getCharacterBasic() throws IOException {
 		CharacterBasicDTO response = api.getCharacterBasic(ocid);
 //		System.out.println(response.toString());
 	}
 	
-//	@Test
+	@Test
 	@DisplayName("장착 아이템 정보 조회")
 	void getCharacterItemEquipment() throws IOException {
 		CharacterItemEquipmentDTO response = api.getCharacterItemEquipment(ocid);
 //		System.out.println(response.toString());
 	}
 	
-//	@Test
+	@Test
 	@DisplayName("스탯 정보 조회")
 	void getCharacterStat() throws IOException {
 		CharacterStatDTO response = api.getCharacterStat(ocid);
 //		System.out.println(response.toString());
 	}
 	
-//	@Test
+	@Test
 	@DisplayName("가입한 길드 정보 조회")
 	void getCharacterGuild() throws IOException {
 		CharacterGuildDTO response = api.getCharacterGuild(ocid);
@@ -64,8 +64,8 @@ public class CharacterApi {
 		CharacterBeautyEquipmentDTO response = api.getCharacterBeautyEquipment(ocid);
 //		System.out.println(response.toString());
 	}
-	// TODO 펫 DTO
-//	@Test
+	
+	@Test
 	@DisplayName("장착 펫 정보 조회")
 	void getCharacterPetEquipment() throws IOException {
 		CharacterPetEquipmentDTO response = api.getCharacterPetEquipment(ocid);
@@ -77,10 +77,9 @@ public class CharacterApi {
 	void getCharacterSkillEquipment() throws IOException {
 		CharacterSkillEquipmentDTO response = api.getCharacterSkillEquipment(ocid);
 //		System.out.println(response.toString());
-		System.out.println(response.getSkill().getEquipmentSkill());
 	}
 	
-//	@Test
+	@Test
 	@DisplayName("V매트릭스 정보 조회")
 	void getCharacterVMaxtrix() throws IOException {
 		CharacterVMatrixDTO response = api.getCharacterVMatrix(ocid);
