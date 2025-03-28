@@ -31,7 +31,7 @@ public class CharacterBasicDTO {
 	@SerializedName("character_gender")
 	private String characterGender;
 	@SerializedName("character_exp")
-	private Integer characterExp;
+	private Long characterExp;
 	@SerializedName("character_level")
 	private Integer characterLevel;
 	
