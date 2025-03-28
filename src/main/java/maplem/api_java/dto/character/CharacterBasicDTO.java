@@ -31,9 +31,9 @@ public class CharacterBasicDTO {
 	@SerializedName("character_gender")
 	private String characterGender;
 	@SerializedName("character_exp")
-	private String characterExp;
+	private Integer characterExp;
 	@SerializedName("character_level")
-	private String characterLevel;
+	private Integer characterLevel;
 	
 	public LocalDateTime getCharacterDateCreate() {
 		return Utils.toLocalDateTime(this.characterDateCreate);
