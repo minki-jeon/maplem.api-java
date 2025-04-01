@@ -3,6 +3,8 @@ package maplem.api_java;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import com.google.gson.Gson;
+
 import lombok.Getter;
 import lombok.Setter;
 import okhttp3.OkHttpClient;
@@ -39,7 +41,7 @@ public class MapleStoryMApi {
 				.getCharacter(this.apiKey, characterName, worldName)
 				.execute();
 		if (!response.isSuccessful()) {
-			// TODO thorw parseError(response);
+			throw parseError(response);
 		}
 		
 		return response.body();
@@ -51,7 +53,7 @@ public class MapleStoryMApi {
 				.getCharacterBasic(this.apiKey, ocid)
 				.execute();
 		if (!response.isSuccessful()) {
-			// TODO thorw parseError(response);
+			throw parseError(response);
 		}
 		
 		return response.body();
@@ -63,7 +65,7 @@ public class MapleStoryMApi {
 				.getCharacterItemEquipment(this.apiKey, ocid)
 				.execute();
 		if (!response.isSuccessful()) {
-			// TODO thorw parseError(response);
+			throw parseError(response);
 		}
 		
 		return response.body();
@@ -75,7 +77,7 @@ public class MapleStoryMApi {
 				.getCharacterStat(this.apiKey, ocid)
 				.execute();
 		if (!response.isSuccessful()) {
-			// TODO thorw parseError(response);
+			throw parseError(response);
 		}
 		
 		return response.body();
@@ -87,7 +89,7 @@ public class MapleStoryMApi {
 				.getCharacterGuild(this.apiKey, ocid)
 				.execute();
 		if (!response.isSuccessful()) {
-			// TODO thorw parseError(response);
+			throw parseError(response);
 		}
 		
 		return response.body();
@@ -99,7 +101,7 @@ public class MapleStoryMApi {
 				.getCharacterBeautyEquipment(this.apiKey, ocid)
 				.execute();
 		if (!response.isSuccessful()) {
-			// TODO thorw parseError(response);
+			throw parseError(response);
 		}
 		
 		return response.body();
@@ -111,7 +113,7 @@ public class MapleStoryMApi {
 				.getCharacterPetEquipment(this.apiKey, ocid)
 				.execute();
 		if (!response.isSuccessful()) {
-			// TODO thorw parseError(response);
+			throw parseError(response);
 		}
 		
 		return response.body();
@@ -123,7 +125,7 @@ public class MapleStoryMApi {
 				.getCharacterSkillEquipment(this.apiKey, ocid)
 				.execute();
 		if (!response.isSuccessful()) {
-			// TODO thorw parseError(response);
+			throw parseError(response);
 		}
 		
 		return response.body();
@@ -135,13 +137,18 @@ public class MapleStoryMApi {
 				.getCharacterVMatrix(this.apiKey, ocid)
 				.execute();
 		if (!response.isSuccessful()) {
-			// TODO thorw parseError(response);
+			throw parseError(response);
 		}
 		
 		return response.body();
 	}
 	
-	
+	private static MapleStoryMApiException parseError(Response<?> response) throws IOException {
+		final Gson gson = new Gson();
+		final MapleStoryMApiErrorBody error = gson.fromJson(response.errorBody().string(), MapleStoryMApiErrorBody.class);
+		
+		return new MapleStoryMApiException(error);
+	}
 	
 	
 	private Retrofit buildRetrofit() {
