@@ -11,7 +11,8 @@ public class MapleStoryMApiException extends RuntimeException {
 		super(errorBody.getError().getMessage());
 		
 		this.errorCode = errorBody.getError().getName();
-		this.message = errorBody.getError().getMessage();
+//		this.message = errorBody.getError().getMessage();
+		this.message = MapleStoryMApiErrorCode.valueOf(errorCode).getKr_message();
 	}
 	
 	public MapleStoryMApiException(String errorCode, String message) {
