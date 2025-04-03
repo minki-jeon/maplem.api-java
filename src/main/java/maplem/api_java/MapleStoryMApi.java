@@ -20,7 +20,9 @@ import maplem.api_java.dto.character.CharacterPetEquipmentDTO;
 import maplem.api_java.dto.character.CharacterSkillEquipmentDTO;
 import maplem.api_java.dto.character.CharacterStatDTO;
 import maplem.api_java.dto.character.CharacterVMatrixDTO;
+import maplem.api_java.dto.notice.NoticeListDTO;
 import maplem.api_java.templete.CharacterApi;
+import maplem.api_java.templete.NoticeApi;
 
 public class MapleStoryMApi {
 	private final String apiKey;
@@ -143,13 +145,24 @@ public class MapleStoryMApi {
 		return response.body();
 	}
 	
+	public NoticeListDTO getNoticeList() throws IOException {
+		final Response<NoticeListDTO> response = buildRetrofit()
+				.create(NoticeApi.class)
+				.getNoticeList(this.apiKey)
+				.execute();
+		if (!response.isSuccessful()) {
+			throw parseError(response);
+		}
+		
+		return response.body();
+	}
+	
 	private static MapleStoryMApiException parseError(Response<?> response) throws IOException {
 		final Gson gson = new Gson();
 		final MapleStoryMApiErrorBody error = gson.fromJson(response.errorBody().string(), MapleStoryMApiErrorBody.class);
 		
 		return new MapleStoryMApiException(error);
 	}
-	
 	
 	private Retrofit buildRetrofit() {
 		return new Retrofit.Builder()
