@@ -20,7 +20,12 @@ import maplem.api_java.dto.character.CharacterPetEquipmentDTO;
 import maplem.api_java.dto.character.CharacterSkillEquipmentDTO;
 import maplem.api_java.dto.character.CharacterStatDTO;
 import maplem.api_java.dto.character.CharacterVMatrixDTO;
+import maplem.api_java.dto.notice.EventNoticeDetailDTO;
+import maplem.api_java.dto.notice.EventNoticeListDTO;
+import maplem.api_java.dto.notice.NoticeDetailDTO;
 import maplem.api_java.dto.notice.NoticeListDTO;
+import maplem.api_java.dto.notice.PatchNoticeDetailDTO;
+import maplem.api_java.dto.notice.PatchNoticeListDTO;
 import maplem.api_java.templete.CharacterApi;
 import maplem.api_java.templete.NoticeApi;
 
@@ -156,6 +161,67 @@ public class MapleStoryMApi {
 		
 		return response.body();
 	}
+	
+	public NoticeDetailDTO getNoticeDetail(int noticeId) throws IOException {
+		final Response<NoticeDetailDTO> response = buildRetrofit()
+				.create(NoticeApi.class)
+				.getNoticeDetail(this.apiKey, noticeId)
+				.execute();
+		if (!response.isSuccessful()) {
+			throw parseError(response);
+		}
+		
+		return response.body();
+	}
+	
+	public PatchNoticeListDTO getPatchNoticeList() throws IOException {
+		final Response<PatchNoticeListDTO> response = buildRetrofit()
+				.create(NoticeApi.class)
+				.getPatchNoticeList(this.apiKey)
+				.execute();
+		if (!response.isSuccessful()) {
+			throw parseError(response);
+		}
+		
+		return response.body();
+	}
+	
+	public PatchNoticeDetailDTO getPatchNoticeDetail(int noticeId) throws IOException {
+		final Response<PatchNoticeDetailDTO> response = buildRetrofit()
+				.create(NoticeApi.class)
+				.getPatchNoticeDetail(this.apiKey, noticeId)
+				.execute();
+		if (!response.isSuccessful()) {
+			throw parseError(response);
+		}
+		
+		return response.body();
+	}
+	
+	public EventNoticeListDTO getEventNoticeList() throws IOException {
+		final Response<EventNoticeListDTO> response = buildRetrofit()
+				.create(NoticeApi.class)
+				.getEventNoticeList(this.apiKey)
+				.execute();
+		if (!response.isSuccessful()) {
+			throw parseError(response);
+		}
+		
+		return response.body();
+	}
+	
+	public EventNoticeDetailDTO getEventNoticeDetail(int noticeId) throws IOException {
+		final Response<EventNoticeDetailDTO> response = buildRetrofit()
+				.create(NoticeApi.class)
+				.getEventNoticeDetail(this.apiKey, noticeId)
+				.execute();
+		if (!response.isSuccessful()) {
+			throw parseError(response);
+		}
+		
+		return response.body();
+	}
+	
 	
 	private static MapleStoryMApiException parseError(Response<?> response) throws IOException {
 		final Gson gson = new Gson();
